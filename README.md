@@ -1,80 +1,281 @@
-# APEX WMS - Smart Warehouse Management System
+# APEX WMS - Enterprise Smart Warehouse Management System
 
-An enterprise-grade, modern, and highly interactive Smart Warehouse Management System (WMS) inspired by Amazon fulfillment center platforms. Features a dark-themed glassmorphism dashboard, real-time Socket.IO synchronizations, JWT role-based access control, and direct Microsoft SQL Server connection pool integration.
-
-## 🚀 Technology Stack
-* **Frontend**: React (Vite) + TailwindCSS + Framer Motion + Recharts + Lucide Icons + Socket.IO Client
-* **Backend**: Node.js + Express + Socket.IO + JWT Authentication + `mssql` pool driver
-* **Database**: Microsoft SQL Server (`SmartWarehouseDB`)
+APEX WMS is a full-stack enterprise warehouse management platform inspired by Amazon fulfillment center systems.
+The system manages real-time warehouse operations including inbound receiving, inventory tracking, outbound order fulfillment, logistics coordination, and live operational monitoring.
 
 ---
 
-## 📂 Project Structure
-```
-d:\DataBase Project\DB WebSite/
+# 🚀 Technologies Used
+
+## Frontend
+
+* React.js + Vite
+* TailwindCSS
+* Framer Motion
+* Recharts
+* Socket.IO Client
+
+## Backend
+
+* Node.js
+* Express.js
+* JWT Authentication
+* Socket.IO
+* MSSQL Driver
+
+## Database
+
+* Microsoft SQL Server
+
+---
+
+# 🏭 System Departments
+
+## Inbound Department
+
+Handles:
+
+* Supplier shipments
+* Receiving products
+* SKU generation
+* UID generation
+* Shipment validation
+
+## Inventory Department
+
+Handles:
+
+* Product storage
+* Warehouse locations
+* Inventory transfers
+* Capacity management
+* Inventory tracking
+
+## Outbound Department
+
+Handles:
+
+* Order picking
+* Packing
+* Shipping
+* Fulfillment workflow
+
+## Network Department
+
+Handles:
+
+* Delivery grouping
+* Logistics planning
+* Route optimization
+
+## Admin Department
+
+Handles:
+
+* Dashboard analytics
+* Reports
+* Audit logs
+* User management
+* System monitoring
+
+---
+
+# 🔥 Core Features
+
+* Real-time warehouse operations
+* Live dashboard synchronization
+* Role-Based Access Control (RBAC)
+* JWT Authentication
+* Audit logging system
+* Warehouse heatmaps
+* Inventory movement tracking
+* Enterprise SQL optimization
+* Stored Procedures & Functions
+* Index optimization
+* Real-time Socket.IO updates
+
+---
+
+# 🗄️ Database Features
+
+* SQL Server relational database
+* ERD-based architecture
+* Indexed queries
+* Stored procedures
+* Triggers
+* Views
+* Functions
+* Audit tables
+* Capacity validation
+* Transaction-safe operations
+
+---
+
+# 📊 System Modules
+
+* Products Management
+* Orders Management
+* Inventory Tracking
+* Warehouse Locations
+* Shipment Receiving
+* Order Fulfillment
+* Audit Logging
+* Reporting System
+* Dashboard Analytics
+
+---
+
+# 🔐 Security Features
+
+* JWT authentication
+* Protected API routes
+* Role permissions
+* Secure middleware
+* Audit tracking
+* DDL protection triggers
+
+---
+
+# ⚡ Real-Time Features
+
+Using Socket.IO:
+
+* Live inventory updates
+* Real-time order updates
+* Dashboard synchronization
+* Warehouse activity feed
+* Operational notifications
+
+---
+
+# 📂 Project Structure
+
+```bash
+APEX-WMS/
+│
 ├── backend/
 │   ├── src/
-│   │   ├── config/
-│   │   │   └── db.js            # SQL Server pool connection config
-│   │   ├── middleware/
-│   │   │   ├── auth.js          # JWT verify & Role authorization (RBAC)
-│   │   │   └── logging.js       # Action & Login Audits
 │   │   ├── routes/
-│   │   │   ├── auth.js          # Credentials verify & Password migration
-│   │   │   ├── admin.js         # KPI stats & analytical trends
-│   │   │   ├── inbound.js       # Transactional item receiving & SKUs
-│   │   │   ├── inventory.js     # Move stock, heatmaps & paginated items
-│   │   │   ├── outbound.js      # Picking checklists, packing, dispatch
-│   │   │   ├── network.js       # Group city delivery batches
-│   │   │   └── reports.js       # Exportable aggregates using SQL views
+│   │   ├── controllers/
+│   │   ├── middleware/
 │   │   ├── socket/
-│   │   │   └── socketHandler.js # Socket.IO namespace presence routing
-│   │   └── server.js            # Server entry
-│   ├── .env
-│   └── package.json
-└── frontend/
-    ├── src/
-    │   ├── components/          # Sidebar, Header, ProtectedRoute
-    │   ├── context/             # AuthContext & SocketContext
-    │   ├── pages/               # Login, Dash, Inbound, Inventory, Outbound, Network, Reports
-    │   ├── App.jsx              # Role-guarded paths mapping
-    │   └── index.css            # Tailwind directives & glassmorphic tokens
-    ├── tailwind.config.js
-    └── package.json
+│   │   └── config/
+│
+├── frontend/
+│   ├── src/
+│   │   ├── pages/
+│   │   ├── components/
+│   │   ├── context/
+│   │   └── services/
+│
+├── database/
+│   ├── SmartWarehouseDB_Schema.sql
+│   └── ERD.png
+│
+├── docs/
+│   ├── Documentation.pdf
+│   └── Presentation.pptx
+│
+└── README.md
 ```
 
 ---
 
-## ⚡ Setup & Launch Instructions
+# ⚙️ Installation
 
-### 1. Database Setup
-The system is pre-configured to connect to Microsoft SQL Server `SmartWarehouseDB` on `localhost`. 
-* By default, it uses **Windows Integrated Authentication** (no username/password required).
-* If SQL Server authentication is active, configure your credentials in `backend/.env`.
+## 1. Clone Repository
 
-### 2. Launch Backend
+```bash
+git clone https://github.com/YOUR_USERNAME/APEX-WMS.git
+```
+
+---
+
+## 2. Backend Setup
+
 ```bash
 cd backend
+npm install
 npm run dev
 ```
-Runs the backend API server on [http://localhost:5000](http://localhost:5000) and starts the Socket.IO service.
 
-### 3. Launch Frontend
+Backend runs on:
+
 ```bash
-cd frontend
-npm run dev
+http://localhost:5000
 ```
-Runs the Vite development server on [http://localhost:5173](http://localhost:5173).
 
 ---
 
-## 🔑 Default Roles & Accounts Matrix
-Authentication uses secure JSON Web Tokens. Access is guarded by Role-Based Access Control (RBAC):
+## 3. Frontend Setup
 
-| Role | Access Permissions | Primary Tasks |
-| :--- | :--- | :--- |
-| **Admin** | Full system-wide access | Statistics dashboards, audits tracking, reports compilation. |
-| **Inbound** | Inbound docked workspace | Log incoming suppliers, define product SKU metadata, transactionally receive shipments. |
-| **Inventory** | Inventory layouts workspace | Monitor rack heatmaps, view capacity load percentages, perform physical slot transfers. |
-| **Outbound** | Sorting & Dispatch workspace | Compile picking checklists, scan pack validations, dispatch route vehicles. |
-| **Network** | Logistics routing workspace | Group city shipments, schedule travel batches, analyze mileage saved. |
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend runs on:
+
+```bash
+http://localhost:5173
+```
+
+---
+
+# 🗃️ Database Setup
+
+1. Open SQL Server Management Studio
+2. Create database:
+
+```sql
+CREATE DATABASE SmartWarehouseDB;
+```
+
+3. Run:
+
+```bash
+database/SmartWarehouseDB_Schema.sql
+```
+
+---
+
+# 👥 Default System Roles
+
+| Role             | Permissions          |
+| ---------------- | -------------------- |
+| Admin            | Full system access   |
+| InventoryManager | Inventory operations |
+| Receiver         | Shipment receiving   |
+| Picker           | Outbound picking     |
+| NetworkManager   | Logistics operations |
+
+---
+
+# 📈 Performance Optimization
+
+The system includes:
+
+* Indexed queries
+* Query optimization
+* Execution plan analysis
+* Performance benchmarking
+* Optimized reporting queries
+
+---
+
+# 🎯 Project Goal
+
+The goal of this project is to simulate a real enterprise warehouse management platform capable of handling large-scale inventory operations, order fulfillment workflows, and logistics management using scalable database and real-time technologies.
+
+---
+
+# 👨‍💻 Authors
+
+Database Systems Project Team
+
+---
+
+# 📄 License
+
+Educational Project - Faculty Database Systems Course
