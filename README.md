@@ -5,7 +5,7 @@ The system manages real-time warehouse operations including inbound receiving, i
 
 ---
 
-# Quick Start
+
 # Quick Start
 
 ## 1. Clone Repository
@@ -275,7 +275,7 @@ APEX-WMS/
 │
 ├── docs/
 │   ├── Documentation.pdf
-│   └── Presentation.pptx
+│   └── Presentation.pdf
 │
 └── README.md
 ```
