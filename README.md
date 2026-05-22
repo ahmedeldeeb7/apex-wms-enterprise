@@ -11,7 +11,7 @@ The system manages real-time warehouse operations including inbound receiving, i
 ## 1. Clone Repository
 
 ```bash
-git clone https://github.com/AhmedEldeeb7/APEX-WMS.git
+git clone https://github.com/AhmedEldeeb7/APEX-WMS-Enterprise.git
 ```
 
 ---
