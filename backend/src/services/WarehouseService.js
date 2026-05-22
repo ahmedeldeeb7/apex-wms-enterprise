@@ -80,9 +80,11 @@ class WarehouseService {
         await request.query(`UPDATE ProductUnits SET LocationID = @TargetLocID, Status = 'Stored' WHERE UID = @${uidKey}`);
 
         // Track movement log
+        const fromLocKey = `FromLoc_${uid}`;
+        request.input(fromLocKey, oldLocationId || null);
         await request.query(`
           INSERT INTO InventoryMovements (UID, FromLocation, ToLocation, MovementType, MovementDate)
-          VALUES (@${uidKey}, @${uidKey}_Loc, @TargetLocID, 'Transfer', GETDATE())
+          VALUES (@${uidKey}, @${fromLocKey}, @TargetLocID, 'Transfer', GETDATE())
         `);
 
         results.push({ uid, from: oldLocationId, to: newLocationId });

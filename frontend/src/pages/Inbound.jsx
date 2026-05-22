@@ -287,21 +287,22 @@ const Inbound = () => {
                       addToast('Please log a supplier catalog template first', 'error');
                       return;
                     }
-                    const res = await fetch(`${API_URL}/inbound/shipments`, {
-                      method: 'POST',
-                      headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                      },
-                      body: JSON.stringify({
-                        supplierId: suppliers[0].SupplierID,
-                        status: 'Transit'
-                      })
-                    });
-                    const d = await res.json();
-                    if (d.success) {
-                      addToast('Simulated Incoming Shipment Transit logged successfully.', 'success');
-                      fetchData();
+                    try {
+                      const data = await apiFetch('/inbound/shipments', {
+                        method: 'POST',
+                        body: {
+                          supplierId: suppliers[0].SupplierID,
+                          status: 'Transit'
+                        }
+                      });
+                      if (data.success) {
+                        addToast('Simulated Incoming Shipment Transit logged successfully.', 'success');
+                        fetchData();
+                      } else {
+                        addToast(data.message || 'Shipment logging failed', 'error');
+                      }
+                    } catch (err) {
+                      addToast('Server communication exception', 'error');
                     }
                   }}
                   className="bg-cyan-500/10 text-cyan-400 border border-cyan-400/20 text-[10px] font-bold tracking-widest uppercase px-4 py-2.5 rounded-lg hover:bg-cyan-500/20 transition-all cursor-pointer"
