@@ -1,6 +1,7 @@
 import express from 'express';
-import { poolPromise } from '../config/db.js';
+import { poolPromise, mssql } from '../config/db.js';
 import { authenticateToken, authorizeRoles } from '../middleware/auth.js';
+import { logOperation } from '../middleware/logging.js';
 
 const router = express.Router();
 
