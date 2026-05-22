@@ -5,6 +5,105 @@ The system manages real-time warehouse operations including inbound receiving, i
 
 ---
 
+# Quick Start
+# Quick Start
+
+## 1. Clone Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/APEX-WMS.git
+```
+
+---
+
+## 2. Backend Setup
+
+```bash
+cd backend
+npm install
+```
+
+Create:
+
+```text
+.env
+```
+
+Copy contents from:
+
+```text
+.env.example
+```
+
+Then run:
+
+```bash
+npm run dev
+```
+
+---
+
+## 3. Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
+## 4. Database Setup
+
+Open SQL Server Management Studio.
+
+Create database:
+
+```sql
+CREATE DATABASE SmartWarehouseDB;
+```
+
+Run:
+
+```text
+database/SmartWarehouseDB_Schema.sql
+```
+
+Optional sample data:
+
+```text
+database/sample_data.sql
+```
+
+---
+
+## 5. Default Login Accounts
+
+| Username           | Password     | Department |
+| ------------------ | ------------ | ---------- |
+| admin              | admin123     | Admin      |
+| inventory_manager1 | inventory123 | Inventory  |
+| receiver1          | inbound123   | Inbound    |
+| picker1            | outbound123  | Outbound   |
+| network_manager1   | network123   | Network    |
+
+---
+
+## 6. Application URLs
+
+Frontend:
+
+```text
+http://localhost:5173
+```
+
+Backend:
+
+```text
+http://localhost:5000
+```
+
+
 # 🚀 Technologies Used
 
 ## Frontend
@@ -170,7 +269,9 @@ APEX-WMS/
 │
 ├── database/
 │   ├── SmartWarehouseDB_Schema.sql
+│   ├── sample_data.sql
 │   └── ERD.png
+│
 │
 ├── docs/
 │   ├── Documentation.pdf
